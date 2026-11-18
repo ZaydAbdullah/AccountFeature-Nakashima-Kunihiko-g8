@@ -16,11 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf import settings
-from django.conf.urls.static import static
+from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', lambda request: redirect('login')), # Redirects root URL to your login page
     path('', include('accounts.urls')),
-    path('', include('core.urls')),  # Include core app URLs
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('items/', include('core.urls')),
+]
