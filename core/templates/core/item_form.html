@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Create Record{% endblock %}
+{% block content %}
+<h2>New Record</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+<a href="{% url 'item_list' %}">Back to List</a>
+{% endblock %}
